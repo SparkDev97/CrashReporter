@@ -23,12 +23,14 @@ CrashReporter_FILES = \
     VictimViewController.m \
     main.m \
     pastie.m
-CrashReporter_CFLAGS = -F$(THEOS)/Frameworks -I$(THEOS_PROJECT_DIR)/Libraries
+CrashReporter_CFLAGS = -F$(THEOS)/Frameworks -I$(THEOS_PROJECT_DIR)/Libraries -Wno-deprecated-declarations
 CrashReporter_LDFLAGS = -F$(THEOS)/Frameworks
 CrashReporter_LIBRARIES = crashreport icucore packageinfo
 CrashReporter_FRAMEWORKS = CoreGraphics MessageUI SystemConfiguration TechSupport UIKit
 
 CrashReporter_CODESIGN_FLAGS="-SEntitlements.plist"
+
+ARCHS = arm64 arm64e
 
 include $(THEOS_MAKE_PATH)/common.mk
 include $(THEOS_MAKE_PATH)/application.mk

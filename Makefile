@@ -1,16 +1,20 @@
 SUBPROJECTS = Application as_root monitor notifier scanner extrainst_
 PKG_ID = crash-reporter
 
-export ARCHS = armv6 arm64
-export SDKVERSION = 7.1
-export TARGET = iphone:clang
-export TARGET_IPHONEOS_DEPLOYMENT_VERSION = 3.0
+export THEOS_DEVICE_IP = localhost
+export THEOS_DEVICE_PORT = 2222
+
+TARGET = iphone:latest:7.0
+ARCHS = arm64 arm64e
+
+SDKVERSION = 11.2
+SYSROOT = $(THEOS)/sdks/iPhoneOS11.2.sdk
 
 export ADDITIONAL_CFLAGS += -I$(THEOS_PROJECT_DIR)/common  -I$(THEOS_PROJECT_DIR)/Libraries/Common -include firmware.h
 export ADDITIONAL_LDFLAGS = -L$(THEOS)/lib/arm
 
-include theos/makefiles/common.mk
-include theos/makefiles/aggregate.mk
+include $(THEOS)/makefiles/common.mk
+include $(THEOS)/makefiles/aggregate.mk
 
 after-stage::
 	# Give as_root the power of root in order to move/delete root-owned files.

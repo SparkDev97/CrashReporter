@@ -24,23 +24,23 @@
 + (id)sharedInstance;
 - (void)activateAlertItem:(id)item;
 @end
-
+/*
 typedef NS_ENUM(NSInteger, UIAlertActionStyle) {
     UIAlertActionStyleDefault = 0,
     UIAlertActionStyleCancel,
     UIAlertActionStyleDestructive
-};
+};*/
 
-@interface UIAlertAction : NSObject <NSCopying>
+@interface UIAlertAction()// : NSObject <NSCopying>
 + (instancetype)actionWithTitle:(NSString *)title style:(UIAlertActionStyle)style handler:(void (^)(UIAlertAction *action))handler;
 @end
-
-@interface UIAlertController : UIViewController
+/*
+@interface UIAlertController()// : UIViewController
 - (void)addAction:(UIAlertAction *)action;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *message;
 @end
-
+*/
 @interface CRAlertItem : SBAlertItem @end
 
 void init_CRAlertItem();

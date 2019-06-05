@@ -5,5 +5,7 @@ as_root_FRAMEWORKS = CoreFoundation
 
 as_root_CODESIGN_FLAGS="-SEntitlements.plist"
 
+ARCHS = arm64 arm64e
+
 include $(THEOS)/makefiles/common.mk
 include $(THEOS)/makefiles/tool.mk
