@@ -220,7 +220,7 @@
             NSString *title = NSLocalizedString(@"SHARE", nil);
             UIBarButtonItem *copyButton = [[UIBarButtonItem alloc] initWithTitle:title
                 style:UIBarButtonItemStyleBordered target:self action:@selector(shareCrashReport)];
-            self.navigationItem.rightBarButtonItem = copyButton;
+            controller.navigationItem.rightBarButtonItem = copyButton;
 
             [copyButton release];
             [controller release];
