@@ -214,7 +214,16 @@
         if (content != nil) {
             TSHTMLViewController *controller = [[TSHTMLViewController alloc] initWithHTMLContent:content];
             controller.title = [instruction title] ?: NSLocalizedString(@"INCLUDE_UNTITLED", nil);
+            controller.filepath = [crashLog_ filepath];
             [self.navigationController pushViewController:controller animated:YES];
+
+            // Create Share button
+            NSString *title = NSLocalizedString(@"SHARE", nil);
+            UIBarButtonItem *copyButton = [[UIBarButtonItem alloc] initWithTitle:title
+                style:UIBarButtonItemStyleBordered target:self action:@selector(shareCrashReport)];
+            self.navigationItem.rightBarButtonItem = copyButton;
+
+            [copyButton release];
             [controller release];
             [content release];
         } else {
@@ -244,6 +253,18 @@ static NSString *createIncludeLineForFilepath(NSString *filepath, NSString *name
     NSString *string = createIncludeLineForFilepath([self syslogPath], @"syslog");
     [self presentViewerWithString:string];
     [string release];
+}
+
+-(void) shareCrashReport
+{
+    NSURL *URL = [NSURL URLWithFilePath: [crashLog_ filepath]];
+
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[URL]
+                                    applicationActivities:nil];
+    [navigationController presentViewController:activityViewController
+                                      animated:YES
+                                    completion:^{
+    }];
 }
 
 - (void)helpButtonTapped {
