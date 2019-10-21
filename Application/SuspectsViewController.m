@@ -214,7 +214,6 @@
         if (content != nil) {
             TSHTMLViewController *controller = [[TSHTMLViewController alloc] initWithHTMLContent:content];
             controller.title = [instruction title] ?: NSLocalizedString(@"INCLUDE_UNTITLED", nil);
-            controller.filepath = [crashLog_ filepath];
             [self.navigationController pushViewController:controller animated:YES];
 
             // Create Share button
@@ -257,11 +256,11 @@ static NSString *createIncludeLineForFilepath(NSString *filepath, NSString *name
 
 -(void) shareCrashReport
 {
-    NSURL *URL = [NSURL URLWithFilePath: [crashLog_ filepath]];
+    NSURL *URL = [NSURL fileURLWithPath: [crashLog_ filepath]];
 
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[URL]
                                     applicationActivities:nil];
-    [navigationController presentViewController:activityViewController
+    [self.navigationController presentViewController:activityViewController
                                       animated:YES
                                     completion:^{
     }];
