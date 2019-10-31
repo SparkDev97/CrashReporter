@@ -8,7 +8,7 @@ Replaces: crash-reporter
 Conflicts: crash-reporter
 Section: System
 Tag: purpose::uikit, role::enduser
-Name: CrashReporter
+Name: CrashReporter (SparkDev)
 Description: Send useful crash info to developers.
 Homepage: http://github/ashikase/CrashReporter/
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=crashreporterData
